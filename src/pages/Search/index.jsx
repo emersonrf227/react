@@ -47,7 +47,7 @@ class Search extends Component {
             <li key={item.id}>
                 <span> {item.id}</span>
                 <span> {item.title}</span>
-                <Link  to={`/produtos/${item.id}`} >
+                <Link  to={`produtos/${item.id}`} >
                     Acessar 
                 </Link>
             </li>

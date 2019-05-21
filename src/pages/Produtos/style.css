@@ -1,0 +1,22 @@
+.mdl-card__supporting-text {
+    color: #000000;
+    font-size: 1rem;
+    line-height: 18px;
+    overflow: hidden;
+    padding: 16px;
+    width: 90%;
+}
+
+.text2 {
+    color: #8b8b8b
+   
+
+}
+
+.textDesc {
+    color: #666;
+   font-size: 14px;
+   font-family: Proxima Nova,-apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
+   text-align: justify;
+
+}

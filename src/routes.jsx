@@ -4,17 +4,19 @@ import {Switch, Route} from 'react-router-dom';
 import Search from './pages/Search'
 import Produtos from './pages/Produtos'
 
+const path = window.location.hostname !== 'localhost' ? '/react/' : '/'; 
+
 const Routes = () => ( 
     <Switch>
         <Route
         exact
-        path='/'
+        path={ path }
         component={Search}
         />
         
         <Route
         exact
-        path='/produtos/:id'
+        path={ `${path}produtos/:id`}
         component={Produtos}
         />
 
@@ -28,3 +30,5 @@ const Routes = () => (
 );
 
 export default Routes; 
+
+
