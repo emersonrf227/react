@@ -1,6 +1,14 @@
 .backAzul { 
-    background-color: blue;
+    background-color:#FFF159;
     width: 100%;
     height: 50px;
 
 };
+
+.inputSearch { 
+    background-color:#FFF;
+    width: 100%;
+    height: 50px;
+
+};
+

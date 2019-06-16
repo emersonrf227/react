@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 
 import axios from 'axios';
 
+import formatMoeda from '../../lib/formatmoeda';
+
 import './style.css';
 
 
@@ -74,7 +76,7 @@ class Produtos extends Component {
                                             <div className="text2">{this.state.data.sold_quantity} vendidos</div>
                                             <div><h3> {this.state.data.title}</h3></div>
                                             <div className="text2"><b>Vendedor:</b> {this.state.data.domain_id}</div>
-                                            <h2><div><b>R$: {this.state.data.price}</b></div></h2>
+                                            <h3><div><b>{formatMoeda(this.state.data.price)}</b></div></h3>
                                             <button className="mdl-button mdl-js-button  mdl-cell--12-col-phone mdl-button--raised mdl-button--colored">
                                                 Comprar
                                             </button>

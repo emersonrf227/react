@@ -4,12 +4,15 @@ import axios from 'axios';
 
 import { Link } from 'react-router-dom';
 
+import formatMoeda from '../../lib/formatmoeda';
+
 import './style.css';
 
 class Search extends Component {
     constructor() {
         super();
         this.onSearch = this.onSearch.bind(this);
+       
 
         this.state = {
 
@@ -19,9 +22,8 @@ class Search extends Component {
 
     onSearch(event) {
         console.log(event.currentTarget.value);
-
-        const value = event.currentTarget.value;
-
+        const value = this.textSearch.value;
+        document.getElementById('divShow').display = "block";
 
 
 
@@ -31,13 +33,9 @@ class Search extends Component {
 
                 console.log(data.results);
 
-                this.setState({
-
+                this.setState({ 
                     results: data.results,
-
-
-
-                });
+            });
 
 
             })
@@ -50,9 +48,8 @@ class Search extends Component {
 
 
             <Fragment>
-
-
-
+                
+                
                 <div className="demo-card mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet">
 
                     <div className="mdl-card__supporting-text">
@@ -67,9 +64,9 @@ class Search extends Component {
 
                             <div className="mdl-cell mdl-cell--9-col mdl-cell--4-col-tablet">
                                 <Link to={`produtos/${item.id}`} >
-                                    <div className="text2" style={{ textDecoration:null }} ><h6> <span> {item.title}</span></h6></div>
+                                    <div className="text2" style={{ textDecoration: null }} ><h6> <span> {item.title}</span></h6></div>
                                 </Link>
-                                <div className="text1"><h4><b>R$:  <span> {item.price}</span> </b> </h4>
+                                <div className="text1"><h4><b><span> {formatMoeda(item.price)}</span> </b> </h4>
                                     <br />
                                     <span className="text2"> {item.installments.quantity}X </span>   <span className="text2"> R$:  {item.installments.amount}</span>
                                 </div>
@@ -83,43 +80,7 @@ class Search extends Component {
                     </div>
                 </div>
 
-
-
-
-
-
-
-
-
-
-
-                {/*            
-                <Link to={`produtos/${item.id}`} >    
-                <div className="demo-card-wide mdl-card mdl-shadow--2dp">
-                    <div className="mdl-card__title">
-                        <h2 className="mdl-card__title-text">  <img src={item.thumbnail} style={{ maxWidth: '100%' }} /> </h2>
-                    </div>
-                    <div className="mdl-card__supporting-text">
-                    <span> {item.installments.quantity}</span>  X <span> {item.installments.amount}</span>    <span> {item.price}</span>
-                    
-        </div>
-                    <div className="mdl-card__actions mdl-card--border">
-                       
-                      
-                        <span> {item.title}</span>
-                   
                 
-                    </div>
-                    <div className="mdl-card__menu">
-                        <button className="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                            <i className="material-icons">share</i>
-                        </button>
-                    </div>
-                </div>
-                </Link> */}
-
-
-
             </Fragment>
         )
 
@@ -136,13 +97,36 @@ class Search extends Component {
                 <div id="container">
                     <div className="backAzul">
 
-                        <input type="text" className="inputSearch" onChange={this.onSearch} />
+                        <center>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                <input class="mdl-textfield__input" style={{ backgroundColor: '#fff', borderRadius: 5 }} ref={input => this.textSearch = input} type="text" id="search" />
+                                <label class="mdl-textfield__label" for="sample3">Pesquisar</label>
+
+
+                            </div>
+                            <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                                <i class="material-icons" onClick={this.onSearch}>search</i>
+                            </label>
+                        </center>
                     </div>
 
                 </div>
 
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet">Content</div>
+                    <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet">
+
+                        <div id="divShow"  style={this.state.showMyComponent ? {} : { display: 'none' }} >  
+
+                       
+                   
+                            <span> Resultado da pesquisa:</span>
+
+                        </div>    
+                        
+                    </div>
+                   
+                   
                     <div class="mdl-cell mdl-cell--10-col mdl-cell--10-col-tablet">
 
                         {this.state.results.map(this.renderResult)}
